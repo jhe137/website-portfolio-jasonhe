@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: settings.data.meta_title,
-    description: settings.data.meta_description,
+    description: settings.data.meta_discription,
     // openGraph: {
     //   images: [settings.data.og_image?.url || ""],
     // },
