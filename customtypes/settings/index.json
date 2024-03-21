@@ -53,7 +53,7 @@
           "placeholder": ""
         }
       },
-      "github": {
+      "github_link": {
         "type": "Link",
         "config": {
           "label": "GitHub Link",

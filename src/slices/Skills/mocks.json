@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "mail",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"skill_name",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "alike",
+							"type": "Text"
+						}
+					],
+					[
+						"skill_colour",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "#014c73",
+							"type": "Color"
+						}
+					]
+				]
+			}
+		]
+	}
+]

@@ -28,14 +28,14 @@ function Geometries(){
     const geometries =[
         {
             position:[0,0,0],
-            r: 0.3,
+            r: 0.5,
             geometry: new THREE.IcosahedronGeometry(3) // Gem
         },
-        {
-            position:[1.5,1.5,0],
-            r: 0.6,
-            geometry: new THREE.TorusKnotGeometry( 0.3, 0.1, 100, 8 ) // TorusKnot
-        },
+        // {
+        //     position:[1.5,1.5,0],
+        //     r: 0.6,
+        //     geometry: new THREE.TorusKnotGeometry( 0.3, 0.1, 100, 8 ) // TorusKnot
+        // },
     ];
     const materials = [
         new THREE.MeshNormalMaterial(),
