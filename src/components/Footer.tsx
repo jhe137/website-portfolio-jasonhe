@@ -21,13 +21,13 @@ export default async function Footer() {
             {settings.data.name}
           </Link>
           <span
-            className="hidden text-2xl font-extralight leading-[0] text-slate-700 sm:inline"
+            className="hidden font-extralight leading-[0] text-slate-700 sm:inline"
             aria-hidden={true}
           >
-            /
+            |
           </span>
           <p className=" text-sm text-slate-700 ">
-            © {new Date().getFullYear()} {settings.data.name}
+            © {new Date().getFullYear()} Jason He. Source code available on <Link href={"https://github.com/jhe137/website-portfolio-jasonhe"} className="underline font-bold underline-offset-4">Github</Link>
           </p>
         </div>
         <nav className="navigation" aria-label="Footer Navigation">
@@ -46,10 +46,10 @@ export default async function Footer() {
                 </li>
                 {index < settings.data.nav_item.length - 1 && (
                   <span
-                    className="text-2xl font-thin leading-[0] text-slate-700"
+                    className="font-thin leading-[0] text-slate-700"
                     aria-hidden="true"
                   >
-                    /
+                    |
                   </span>
                 )}
               </React.Fragment>
