@@ -423,7 +423,18 @@ interface SettingsDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  linkedin_link: prismic.LinkField /**
+  linkedin_link: prismic.LinkField;
+
+  /**
+   * Twitter Link field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.twitter_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  twitter_link: prismic.LinkField /**
    * Meta Title field in *Settings*
    *
    * - **Field Type**: Text
@@ -435,15 +446,15 @@ interface SettingsDocumentData {
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Discription field in *Settings*
+   * Meta Description field in *Settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.meta_discription
+   * - **API ID Path**: settings.meta_description
    * - **Tab**: SEO and Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  meta_discription: prismic.KeyTextField;
+  meta_description: prismic.KeyTextField;
 
   /**
    * OG Image field in *Settings*

@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Props for `SkillsList`.
  */
-export type SkillsListProps = SliceComponentProps<Content.SkillsListSlice>;
+export type SkillsListProps = SliceComponentProps<Content.TechListSlice>;
 
 /**
  * Component for "SkillsList" Slices.

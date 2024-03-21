@@ -69,6 +69,14 @@
           "placeholder": "",
           "select": null
         }
+      },
+      "twitter_link": {
+        "type": "Link",
+        "config": {
+          "label": "Twitter Link",
+          "placeholder": "",
+          "select": null
+        }
       }
     },
     "SEO and Metadata": {
@@ -79,10 +87,10 @@
           "placeholder": ""
         }
       },
-      "meta_discription": {
+      "meta_description": {
         "type": "Text",
         "config": {
-          "label": "Meta Discription",
+          "label": "Meta Description",
           "placeholder": ""
         }
       },
