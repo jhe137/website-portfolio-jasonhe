@@ -24,9 +24,9 @@ export default function ContentBody({page}: {
                                 ))}
                             </div>
     
-    <p className="mt-8 border-b border-slate-700 text-xl font-medium text-slate-700">{page.data.date}</p>
+    <p className="mt-8 border-b border-slate-700 md:text-xl font-medium text-slate-700">{page.data.date}</p>
     
-    <div className="prose prose-lg mt-12 w-full max-w-none md:mt-20"><SliceZone slices={page.data.slices} components={components} />
+    <div className="prose md:prose-lg mt-12 w-full max-w-none md:mt-20"><SliceZone slices={page.data.slices} components={components} />
     </div>
     <PrismicImage field ={page.data.image} imgixParams={{w: 600}}/>
     </div>

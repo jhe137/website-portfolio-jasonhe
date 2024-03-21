@@ -102,7 +102,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = ContactSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -168,6 +168,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContactSlice
   | ExperienceSlice
   | ContentIndexSlice
   | TechListSlice
@@ -577,6 +578,51 @@ export type BiographySlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Contact → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+  /**
+   * Heading field in *Contact → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
+>;
+
+/**
  * Primary content in *ContentIndex → Primary*
  */
 export interface ContentIndexSliceDefaultPrimary {
@@ -948,6 +994,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      ContactSlice,
+      ContactSliceDefaultPrimary,
+      ContactSliceVariation,
+      ContactSliceDefault,
       ContentIndexSlice,
       ContentIndexSliceDefaultPrimary,
       ContentIndexSliceVariation,
