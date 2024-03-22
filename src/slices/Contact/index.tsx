@@ -6,6 +6,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import ContactForm from "@/components/ContactForm";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
+import Shapes from "@/components/Shapes";
 /**
  * Props for `Contact`.
  */
@@ -20,11 +21,19 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-       <Heading as="h3" size="lg" className="col-start-1">
+      <div className=" grid gap-4 min-h-[70vh] grid-cols-1 md:grid-cols-2 item-center">
+       <div className="">
+       <Heading as="h3" size="lg" className="py-10">
           {slice.primary.heading}
         </Heading>
       <ContactForm />
+      </div>
+      <Shapes/>
+      </div>
+      
     </Bounded>
+    
+    
   );
 };
 

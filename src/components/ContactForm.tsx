@@ -5,10 +5,12 @@ import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import Button from './Button';
 import clsx from 'clsx';
+import Heading from './Heading';
 function ContactForm() {
   const [state, handleSubmit] = useForm("xleqwoag");
   if (state.succeeded) {
-      return <p>Thanks for joining!</p>;
+    
+      return <Heading as="h3" size ="lg">Thanks for reaching out!</Heading>;
   }
   return (
       <form onSubmit={handleSubmit}>
