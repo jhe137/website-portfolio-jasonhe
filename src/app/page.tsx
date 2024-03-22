@@ -10,7 +10,7 @@ export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("homepage");
 
-  return (<><Head><Script defer src="https://analytics.us.umami.is/script.js" data-website-id="d3729649-d653-4aee-a8b3-4e32c719d772"></Script></Head>
+  return (<><Head><script defer src="https://analytics.us.umami.is/script.js" data-website-id="d3729649-d653-4aee-a8b3-4e32c719d772"/></Head>
   <SliceZone slices={page.data.slices} components={components} /></>);
 }
 
