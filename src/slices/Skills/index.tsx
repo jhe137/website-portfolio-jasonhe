@@ -54,14 +54,14 @@ const SkillsList = ({ slice }: SkillsListProps): JSX.Element => {
       ref ={component}
     >
       <Bounded as="div">
-     <Heading size="xl" className="mb-8" as="h2">
+     <Heading size="md" className="mb-5" as="h2">
       {slice.primary.heading}
      </Heading></Bounded>
      {slice.items.map(({skill_colour,skill_name}, index)=>(
       <div key={index} className="skill-row mb-8 flex items-center justify-center gap-4 text-slate-400" aria-label={skill_name || undefined}>
         {Array.from({length:15 }, (_, index)=>(
           <React.Fragment key={index}>
-            <span className="skill-item text-8xl font-extrabold uppercase tracking-tighter"
+            <span className="skill-item text-7xl font-extrabold uppercase tracking-tighter"
             style ={{
               color: index === 7 && skill_colour ? skill_colour :"inherit"
             }}>{skill_name}</span>

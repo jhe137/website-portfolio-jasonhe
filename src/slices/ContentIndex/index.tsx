@@ -24,7 +24,7 @@ const ContentIndex = async ({ slice }: ContentIndexProps): Promise<JSX.Element> 
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Heading size="xl" className="mb-8">
+      <Heading size="md" className="mb-8">
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (

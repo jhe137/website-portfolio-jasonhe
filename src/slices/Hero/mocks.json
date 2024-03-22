@@ -17,6 +17,18 @@
 				"__TYPE__": "FieldContent",
 				"value": "number",
 				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "swimming",
+				"type": "Text"
 			}
 		},
 		"items": []
