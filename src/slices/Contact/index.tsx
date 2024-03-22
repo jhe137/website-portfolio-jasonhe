@@ -23,7 +23,7 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
     >
       <div className=" grid gap-4 min-h-[70vh] grid-cols-1 md:grid-cols-2 item-center">
        <div className="">
-       <Heading as="h3" size="lg" className="py-10">
+       <Heading as="h3" size="md" className="py-10">
           {slice.primary.heading}
         </Heading>
       <ContactForm />
