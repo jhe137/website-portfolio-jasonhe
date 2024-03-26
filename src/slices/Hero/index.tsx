@@ -18,6 +18,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const component = useRef(null)
 
     useEffect(() =>{
+      
       let ctx = gsap.context(() =>{
         const tl = gsap.timeline()
         tl.fromTo(".name-animation", {
@@ -42,15 +43,28 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         tl.fromTo(".job-title", {
           y:20,
           opacity:0,
-          scale: 1.2,
+          scale: 1,
           },
           {
           y:0,
           opacity:1,
-          duration:1,
+          duration:0.5,
           scale:1,
-          ease: "elastic.out(1,0.3)",          
-          })
+          ease: "poweri.out",          
+          });
+          tl.fromTo(".cta-button", {
+            y:20,
+            opacity:0,
+            scale: 1,
+            },
+            {
+            y:0,
+            opacity:1,
+            duration:0.5,
+            scale:1,
+            ease: "poweri.out",          
+            })
+          
 
       }, component)
       return() => ctx.revert();
@@ -76,7 +90,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       <span className ="-mt-[.2em] block text-slate-700"><>{renderLetters(slice.primary.last_name, "last")}</></span>
       <span className ="job-title text-2xl font-bold tracking-[.025em] text-slate-600 bg-clip-text block md:text-4xl opacity-0"><>{slice.primary.tag_line}</></span>
       </h1>
-      <Button linkField={slice.primary.button_link} label={slice.primary.button_text}/>  
+      <Button className= "cta-button opacity-0" linkField={slice.primary.button_link} label={slice.primary.button_text}/>  
       </div>
       </div>
     </Bounded>
@@ -84,3 +98,5 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 };
 
 export default Hero;
+
+

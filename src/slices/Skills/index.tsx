@@ -22,6 +22,7 @@ const SkillsList = ({ slice }: SkillsListProps): JSX.Element => {
   const component = useRef(null);
   
   useEffect(()=>{
+    
     let ctx = gsap.context(()=>{
         const tl = gsap.timeline({
           scrollTrigger:  {
