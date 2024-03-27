@@ -102,7 +102,10 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = ContactSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | AnimatedTextSlice
+  | ContactSlice
+  | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -491,6 +494,61 @@ export type AllDocumentTypes =
   | PageDocument
   | ProjectDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *AnimatedText → Primary*
+ */
+export interface AnimatedTextSliceDefaultPrimary {
+  /**
+   * Heading field in *AnimatedText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: animated_text.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Description field in *AnimatedText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: animated_text.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for AnimatedText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnimatedTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AnimatedTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AnimatedText*
+ */
+type AnimatedTextSliceVariation = AnimatedTextSliceDefault;
+
+/**
+ * AnimatedText Shared Slice
+ *
+ * - **API ID**: `animated_text`
+ * - **Description**: AnimatedText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnimatedTextSlice = prismic.SharedSlice<
+  "animated_text",
+  AnimatedTextSliceVariation
+>;
 
 /**
  * Primary content in *Biography → Primary*
@@ -1010,6 +1068,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavItemItem,
       AllDocumentTypes,
+      AnimatedTextSlice,
+      AnimatedTextSliceDefaultPrimary,
+      AnimatedTextSliceVariation,
+      AnimatedTextSliceDefault,
       BiographySlice,
       BiographySliceDefaultPrimary,
       BiographySliceVariation,

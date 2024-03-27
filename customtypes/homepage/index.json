@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "animated_text": {
+              "type": "SharedSlice"
+            },
             "contact": {
               "type": "SharedSlice"
             },

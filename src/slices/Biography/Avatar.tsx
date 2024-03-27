@@ -19,9 +19,9 @@ export default function Avatar({
         let ctx = gsap.context(()=>{
             gsap.fromTo(
                 ".avatar",{
-                    opacity:0, scale:1.4
+                   opacity:0, scale:1
                 },{
-                    scale:1, opacity:1, duration: 1, ease:"power3.inOut"
+                    scale:1, opacity:1, duration: 0.5, ease:"power4.inOut"
                 }   
             );
             

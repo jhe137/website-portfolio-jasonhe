@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 const poppinsRegular = Poppins({
   subsets: ["latin"],
@@ -36,8 +37,11 @@ export default function RootLayout({
       
       <body className={poppinsRegular.className}>
         <Header/>
+        <SmoothScrolling>
         {children}
-        <Footer/>
+        </SmoothScrolling>
+              <Footer/>
+        
       </body>
       <PrismicPreview repositoryName={repositoryName}/>
     </html>
