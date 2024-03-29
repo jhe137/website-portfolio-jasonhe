@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "cry",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"skill_name",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "lead",
+							"type": "Text"
+						}
+					],
+					[
+						"skill_inverted",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "solve",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

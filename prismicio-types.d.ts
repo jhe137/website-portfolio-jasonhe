@@ -103,6 +103,7 @@ export type BlogPostDocument<Lang extends string = string> =
   >;
 
 type HomepageDocumentDataSlicesSlice =
+  | AnimatedHeadingsSlice
   | AnimatedTextSlice
   | ContactSlice
   | HeroSlice;
@@ -494,6 +495,76 @@ export type AllDocumentTypes =
   | PageDocument
   | ProjectDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *AnimatedHeadings → Primary*
+ */
+export interface AnimatedHeadingsSliceDefaultPrimary {
+  /**
+   * Heading field in *AnimatedHeadings → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: animated_headings.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *AnimatedHeadings → Items*
+ */
+export interface AnimatedHeadingsSliceDefaultItem {
+  /**
+   * Skill Name field in *AnimatedHeadings → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: animated_headings.items[].skill_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  skill_name: prismic.KeyTextField;
+
+  /**
+   * Skill Inverted field in *AnimatedHeadings → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: animated_headings.items[].skill_inverted
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  skill_inverted: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for AnimatedHeadings Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnimatedHeadingsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AnimatedHeadingsSliceDefaultPrimary>,
+  Simplify<AnimatedHeadingsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *AnimatedHeadings*
+ */
+type AnimatedHeadingsSliceVariation = AnimatedHeadingsSliceDefault;
+
+/**
+ * AnimatedHeadings Shared Slice
+ *
+ * - **API ID**: `animated_headings`
+ * - **Description**: AnimatedHeadings
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnimatedHeadingsSlice = prismic.SharedSlice<
+  "animated_headings",
+  AnimatedHeadingsSliceVariation
+>;
 
 /**
  * Primary content in *AnimatedText → Primary*
@@ -1068,6 +1139,11 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavItemItem,
       AllDocumentTypes,
+      AnimatedHeadingsSlice,
+      AnimatedHeadingsSliceDefaultPrimary,
+      AnimatedHeadingsSliceDefaultItem,
+      AnimatedHeadingsSliceVariation,
+      AnimatedHeadingsSliceDefault,
       AnimatedTextSlice,
       AnimatedTextSliceDefaultPrimary,
       AnimatedTextSliceVariation,

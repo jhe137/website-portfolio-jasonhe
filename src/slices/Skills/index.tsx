@@ -29,6 +29,7 @@ const SkillsList = ({ slice }: SkillsListProps): JSX.Element => {
             trigger: component.current,
             start:"top bottom",
             end: "bottom top",
+            
             scrub: 5,
           },
         });
@@ -73,6 +74,7 @@ const SkillsList = ({ slice }: SkillsListProps): JSX.Element => {
           </React.Fragment>
         ))}
       </div>
+      
      ))}
     </section>
   );

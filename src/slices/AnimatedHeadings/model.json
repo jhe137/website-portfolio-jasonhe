@@ -1,0 +1,41 @@
+{
+  "id": "animated_headings",
+  "type": "SharedSlice",
+  "name": "AnimatedHeadings",
+  "description": "AnimatedHeadings",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "skill_name": {
+          "type": "Text",
+          "config": {
+            "label": "Skill Name",
+            "placeholder": ""
+          }
+        },
+        "skill_inverted": {
+          "type": "Text",
+          "config": {
+            "label": "Skill Inverted",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

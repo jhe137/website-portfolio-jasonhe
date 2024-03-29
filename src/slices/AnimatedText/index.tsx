@@ -26,8 +26,8 @@ const AnimatedText = ({ slice }: AnimatedTextProps): JSX.Element => {
         const tl = gsap.timeline({
           scrollTrigger:  {
             trigger: component.current,
-            start:"top center",
-            end: "bottom top",
+            start:"top bottom",
+            end: "bottom 60%",
             scrub: 1,
             markers: true,
           },
@@ -59,7 +59,7 @@ const renderLetters = (name: KeyTextField, key: string) => {
       return <span key={index}>&nbsp;</span>;
     }
     return (
-      <span key={index} className={`text-animation text-animation-${key} inline-block opacity-0`}>
+      <span key={index} className={`text-animation text-animation-${key} inline-block opacity-0 mb-4`}>
         {letter}
       </span>
     );
@@ -71,9 +71,10 @@ const renderLetters = (name: KeyTextField, key: string) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref = {component}
+      className="bg-stone-200"
     >
       
-      <Heading as="h2" size="xs" className="col-start-1 uppercase text-slate-600 tracking-widest my-5">
+      <Heading as="h2" size="xs" className="col-start-1 uppercase text-slate-600 tracking-widest mb-5">
           {slice.primary.heading}
         </Heading>
         <div className="text-animation col-start-1 text-7xl font-bold text-slate-600">

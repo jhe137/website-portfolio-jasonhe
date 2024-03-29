@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
-    "@prismicio/client": "^7.3.1",
+    "@prismicio/client": "^7.4.0",
     "@prismicio/next": "^1.5.0",
-    "@prismicio/react": "^2.7.3",
+    "@prismicio/react": "^2.7.4",
     "@react-three/drei": "^9.102.6",
     "@react-three/fiber": "^8.15.19",
     "@studio-freight/lenis": "^1.0.42",
