@@ -27,9 +27,9 @@ const AnimatedHeadings = ({ slice }: AnimatedHeadingsProps): JSX.Element => {
           scrollTrigger:  {
             trigger: component.current,
             start:"top bottom",
-            end: "70% center",
+            end: "bottom top",
             scrub: 1,
-            markers: true,
+            markers: false,
           },
         });
 
@@ -63,21 +63,22 @@ const AnimatedHeadings = ({ slice }: AnimatedHeadingsProps): JSX.Element => {
       className="bg-stone-100"
       ref = {component}
     >
-      
-      <Heading as="h2" size="xs" className="col-start-1 uppercase text-slate-600 tracking-widest mb-5">
+     
+      <Heading as="h2" size="xs" className="col-start-1 uppercase text-slate-600 tracking-widest text-center mb-5">
           {slice.primary.heading}
         </Heading>
+       
       
               {slice.items.map(({skill_name,skill_inverted}, index)=>(
       <div key={index} 
-      className="border-b border-slate-900 flex  group" 
+      className="border-b border-slate-900 flex  group items-center justify-center" 
       aria-label={skill_name || undefined}>
-                 <span className="relative text-9xl font-extrabold uppercase tracking-tighter  text-slate-400 ">{skill_name}</span>
+                 <span className="relative text-7xl md:text-9xl font-extrabold uppercase tracking-tighter  text-slate-400 ">{skill_name}</span>
                
-          <span className="absolute skill-animation text-9xl font-extrabold uppercase tracking-tighter text-slate-800">{skill_name}</span>
+          <span className="absolute skill-animation text-7xl md:text-9xl font-extrabold uppercase tracking-tighter text-slate-800">{skill_name}</span>
           
-          <div key={index} className="flex absolute bg-slate-700 clip-path-initial group-hover:clip-path-full w-full " aria-label={skill_inverted|| undefined}>
-          <span className="text-9xl font-extrabold uppercase tracking-tighter  text-slate-200 ">{skill_inverted}</span>
+          <div key={index} className="flex absolute bg-slate-700 w-full clip-path-initial items-center justify-center group-hover:clip-path-full " aria-label={skill_inverted|| undefined}>
+          <span className="text-7xl md:text-9xl font-extrabold uppercase tracking-tighter  text-slate-200 ">{skill_inverted}</span>
                         </div>                 
       </div>
      ))}

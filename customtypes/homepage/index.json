@@ -11,13 +11,13 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "alternate_hero": {
+              "type": "SharedSlice"
+            },
             "animated_headings": {
               "type": "SharedSlice"
             },
             "animated_text": {
-              "type": "SharedSlice"
-            },
-            "contact": {
               "type": "SharedSlice"
             },
             "hero": {

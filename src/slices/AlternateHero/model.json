@@ -1,0 +1,41 @@
+{
+  "id": "alternate_hero",
+  "type": "SharedSlice",
+  "name": "AlternateHero",
+  "description": "AlternateHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "full_name": {
+          "type": "Text",
+          "config": {
+            "label": "Full Name",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

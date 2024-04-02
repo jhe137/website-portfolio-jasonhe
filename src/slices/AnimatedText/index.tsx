@@ -2,7 +2,7 @@
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import { Content, KeyTextField } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -29,7 +29,7 @@ const AnimatedText = ({ slice }: AnimatedTextProps): JSX.Element => {
             start:"top bottom",
             end: "bottom 60%",
             scrub: 1,
-            markers: true,
+            markers: false,
           },
         });
 

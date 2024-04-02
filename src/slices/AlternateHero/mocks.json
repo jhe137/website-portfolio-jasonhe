@@ -1,0 +1,33 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "result",
+				"type": "Text"
+			},
+			"full_name": {
+				"__TYPE__": "FieldContent",
+				"value": "local",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"text",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "uncle",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

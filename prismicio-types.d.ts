@@ -103,9 +103,9 @@ export type BlogPostDocument<Lang extends string = string> =
   >;
 
 type HomepageDocumentDataSlicesSlice =
+  | AlternateHeroSlice
   | AnimatedHeadingsSlice
   | AnimatedTextSlice
-  | ContactSlice
   | HeroSlice;
 
 /**
@@ -495,6 +495,76 @@ export type AllDocumentTypes =
   | PageDocument
   | ProjectDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *AlternateHero → Primary*
+ */
+export interface AlternateHeroSliceDefaultPrimary {
+  /**
+   * Heading field in *AlternateHero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: alternate_hero.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Full Name field in *AlternateHero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: alternate_hero.primary.full_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  full_name: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *AlternateHero → Items*
+ */
+export interface AlternateHeroSliceDefaultItem {
+  /**
+   * Text field in *AlternateHero → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: alternate_hero.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for AlternateHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AlternateHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AlternateHeroSliceDefaultPrimary>,
+  Simplify<AlternateHeroSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *AlternateHero*
+ */
+type AlternateHeroSliceVariation = AlternateHeroSliceDefault;
+
+/**
+ * AlternateHero Shared Slice
+ *
+ * - **API ID**: `alternate_hero`
+ * - **Description**: AlternateHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AlternateHeroSlice = prismic.SharedSlice<
+  "alternate_hero",
+  AlternateHeroSliceVariation
+>;
 
 /**
  * Primary content in *AnimatedHeadings → Primary*
@@ -1139,6 +1209,11 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavItemItem,
       AllDocumentTypes,
+      AlternateHeroSlice,
+      AlternateHeroSliceDefaultPrimary,
+      AlternateHeroSliceDefaultItem,
+      AlternateHeroSliceVariation,
+      AlternateHeroSliceDefault,
       AnimatedHeadingsSlice,
       AnimatedHeadingsSliceDefaultPrimary,
       AnimatedHeadingsSliceDefaultItem,
