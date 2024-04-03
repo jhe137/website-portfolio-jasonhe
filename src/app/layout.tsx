@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en" className="bg-stone-100 text-slate-700">
 
       <body className={poppinsRegular.className}>
-        {/* <Header /> */}
+        <Header />
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
