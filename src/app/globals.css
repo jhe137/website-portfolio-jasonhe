@@ -5,13 +5,174 @@
 
 
 
-  .clip-path-initial {
-    clip-path: inset(50% 0% 50%); /* Hides the content initially */
-    transition: clip-path 0.5s ease-in-out;
+.clip-path-initial {
+  clip-path: inset(50% 0% 50%);
+  /* Hides the content initially */
+  transition: clip-path 0.5s ease-in-out;
+}
+
+.group:hover .clip-path-initial {
+  clip-path: inset(0);
+  /* Full reveal */
+
+}
+
+.hover\:animate-rotate-infinite:hover {
+  animation: rotate-infinite 1s linear infinite;
+}
+
+
+@keyframes rotate-infinite {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .group:hover .clip-path-initial {
-    clip-path: inset(0); /* Full reveal */
-  
+
+  to {
+    transform: rotate(359deg);
   }
-  
+}
+
+@keyframes rotate-open {
+  from {
+    transform: rotate(0deg);
+    top: 35%;
+  }
+
+  to {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+}
+
+@keyframes rotate-closed {
+  from {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+
+  to {
+    transform: rotate(0deg);
+    top: 35%;
+  }
+}
+
+@keyframes rotate-mid-open {
+  from {
+    transform: rotate(0deg);
+
+  }
+
+  to {
+    transform: rotate(45deg);
+
+  }
+
+}
+
+@keyframes rotate-mid-closed {
+  from {
+    transform: rotate(45deg);
+
+  }
+
+  to {
+    transform: rotate(0deg);
+
+  }
+
+}
+
+@keyframes rotate-mid2-open {
+  from {
+    transform: rotate(0deg);
+
+  }
+
+  to {
+    transform: rotate(-45deg);
+
+  }
+
+}
+
+@keyframes rotate-mid2-closed {
+  from {
+    transform: rotate(-45deg);
+
+  }
+
+  to {
+    transform: rotate(0deg);
+
+  }
+
+}
+
+@keyframes rotate-bot-open {
+  from {
+    transform: rotate(0deg);
+    bottom: 35%;
+
+  }
+
+  to {
+    transform: rotate(-45deg);
+    bottom: 50%;
+  }
+
+}
+
+@keyframes rotate-bot-closed {
+  from {
+    transform: rotate(-45deg);
+    bottom: 50%;
+
+  }
+
+  to {
+    transform: rotate(0deg);
+    bottom: 35%;
+
+  }
+
+}
+
+
+.burger-top-open {
+  animation: rotate-open 0.5s forwards;
+}
+
+
+.burger-top-closed {
+  animation: rotate-closed 0.5s forwards;
+}
+
+.burger-mid-open {
+  animation: rotate-mid-open 0.5s forwards;
+
+}
+
+.burger-mid-closed {
+  animation: rotate-mid-closed 0.5s forwards;
+
+}
+
+.burger-mid2-open {
+  animation: rotate-mid2-open 0.5s forwards;
+
+}
+
+.burger-mid2-closed {
+  animation: rotate-mid2-closed 0.5s forwards;
+
+}
+
+.burger-bot-open {
+  animation: rotate-bot-open 0.5s forwards;
+
+}
+
+.burger-bot-closed {
+  animation: rotate-bot-closed 0.5s forwards;
+
+}

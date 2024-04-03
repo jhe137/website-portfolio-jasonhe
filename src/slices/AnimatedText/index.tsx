@@ -74,7 +74,7 @@ const AnimatedText = ({ slice }: AnimatedTextProps): JSX.Element => {
       className="bg-stone-200"
     >
 
-      <Heading as="h2" size="xs" className="col-start-1 uppercase text-slate-600 tracking-[0.3em] md:pt-32 mb-10">
+      <Heading as="h2" size="xs" className="col-start-1  text-slate-600 tracking-[0.3em] md:pt-20 mb-10">
         {slice.primary.heading}
       </Heading>
       <div className="text-animation col-start-1 lg:text-7xl font-black tracking-tighter text-slate-600 md:pb-36 text-4xl">

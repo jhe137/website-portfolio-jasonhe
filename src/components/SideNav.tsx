@@ -2,13 +2,15 @@
 
 import clsx from "clsx";
 import React, { useState } from "react";
-import { Content, KeyTextField, asLink } from "@prismicio/client";
+import { Content, KeyTextField, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Image from "next/image";
 import { MdMenu, MdClose } from "react-icons/md";
 import Button from "./Button";
 import { usePathname } from "next/navigation";
+import Burger from "./Burger";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
 
 export default function NavBar({
     settings,
@@ -20,38 +22,53 @@ export default function NavBar({
 
     return (
         <nav aria-label="Main navigation">
-            <ul className="flex flex-col justify-between rounded-b-lg  border-slate-700 bg-neutral-100 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
+            <ul className="flex flex-col justify-between rounded-b-lg  border-slate-700 bg-neutral-100 px-4 py-2 md:m-4 md:flex-row md:items-center ">
                 <div className="flex items-center justify-between">
                     <NameLogo name={settings.data.name} />
-                    <button
-                        aria-expanded={open}
-                        aria-label="Open menu"
-                        className="block p-2 text-2xl text-slate-800 md:hidden"
-                        onClick={() => setOpen(true)}
-                    >
-                        <MdMenu />
-                    </button>
+
                 </div>
                 <div
                     className={clsx(
-                        "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-neutral-100 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
-                        open ? "translate-x-0" : "translate-x-[100%]",
+                        "fixed bottom-0 left-0 right-0 top-0 z-40 flex items-end gap-6 justify-end bg-slate-200 pr-8 pb-14 transition-transform duration-[800ms] ease-in-out md:hidden1",
+                        open ? "md:translate-y-[-50%] translate-y-0" : "translate-y-[-100%]",
                     )}
                 >
-                    <button
-                        aria-label="Close menu"
-                        aria-expanded={open}
-                        className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
-                        onClick={() => setOpen(false)}
-                    >
-                        <MdClose />
-                    </button>
+                    <div className="socials inline-flex justify-center sm:justify-end">
+                        {isFilled.link(settings.data.github_link) && (
+                            <PrismicNextLink
+                                field={settings.data.github_link}
+                                className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
+                                aria-label={settings.data.name + " on GitHub"}
+                            >
+                                <FaGithub />
+                            </PrismicNextLink>
+                        )}
+                        {isFilled.link(settings.data.twitter_link) && (
+                            <PrismicNextLink
+                                field={settings.data.twitter_link}
+                                className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
+                                aria-label={settings.data.name + " on Twitter"}
+                            >
+                                <FaTwitter />
+                            </PrismicNextLink>
+                        )}
+                        {isFilled.link(settings.data.linkedin_link) && (
+                            <PrismicNextLink
+                                field={settings.data.linkedin_link}
+                                className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
+                                aria-label={settings.data.name + " on LinkedIn"}
+                            >
+                                <FaLinkedin />
+                            </PrismicNextLink>
+                        )}
+                    </div>
+
                     {settings.data.nav_item.map(({ link, label }, index) => (
                         <React.Fragment key={label}>
                             <li className="first:mt-8">
                                 <PrismicNextLink
                                     className={clsx(
-                                        "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 ",
+                                        "group relative block overflow-hidden rounded px-3 text-7xl font-bold tracking-tight text-slate-900 leading-tight",
                                     )}
                                     field={link}
                                     onClick={() => setOpen(false)}
@@ -61,36 +78,39 @@ export default function NavBar({
                                             : undefined
                                     }
                                 >
-                                    <span
+                                    {/* <span
                                         className={clsx(
-                                            "absolute inset-0 z-0 h-full translate-y-12 rounded bg-slate-400 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
+                                            "absolute inset-0 z-0 h-full translate-y-12 rounded bg-blue-400 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
                                             pathname.includes(asLink(link) as string)
                                                 ? "translate-y-6"
                                                 : "translate-y-18",
                                         )}
-                                    />
+                                    /> */}
                                     <span className="relative">{label}</span>
                                 </PrismicNextLink>
                             </li>
-                            {index < settings.data.nav_item.length - 1 && (
-                                <span
-                                    className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
-                                    aria-hidden="true"
-                                >
-                                    |
-                                </span>
-                            )}
+
                         </React.Fragment>
                     ))}
-                    <li>
-                        <Button
+                    {/* <li> */}
+                    {/* <Button
                             linkField={settings.data.cta_link}
                             label={settings.data.cta_label}
                             className="ml-3"
-                        />
-                    </li>
+                        /> */}
+
+                    {/* </li> */}
                 </div>
-                <DesktopMenu settings={settings} pathname={pathname} />
+                <div className="flex items-center justify-center">
+                    <DesktopMenu settings={settings} pathname={pathname} />
+                    <button
+                        aria-expanded={open}
+                        aria-label="Open menu"
+                        className="block p-2 text-2xl text-slate-800 md:hidden1"
+                        onClick={() => setOpen(!open)}
+                    >
+                        <Burger />
+                    </button></div>
             </ul>
         </nav>
     );
@@ -103,7 +123,7 @@ function NameLogo({ name }: { name: KeyTextField }) {
             aria-label="Home page"
             className="text-xl font-extrabold tracking-tighter text-slate-900 flex"
         >
-            <div className="flex items-center "><Image src="/images/logo.png" className="hover:rotate-180 transition-transform" alt="logo" width={50} height={50} />{name}</div>
+            <div className="flex items-center "><Image src="/images/logo.png" className="hover:animate-rotate-infinite transition-transform" alt="logo" width={70} height={70} />{name}</div>
         </Link>
     );
 }
@@ -116,7 +136,7 @@ function DesktopMenu({
     pathname: string;
 }) {
     return (
-        <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
+        <div className="relative z-[39] hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
             {settings.data.nav_item.map(({ link, label }, index) => (
                 <React.Fragment key={label}>
                     <li>
@@ -129,33 +149,27 @@ function DesktopMenu({
                                 pathname.includes(asLink(link) as string) ? "page" : undefined
                             }
                         >
-                            <span
+                            {/* <span
                                 className={clsx(
                                     "absolute inset-0 z-0 h-full rounded bg-slate-400 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
                                     pathname.includes(asLink(link) as string)
                                         ? "translate-y-6"
                                         : "translate-y-8",
                                 )}
-                            />
+                            /> */}
                             <span className="relative">{label}</span>
                         </PrismicNextLink>
                     </li>
-                    {index < settings.data.nav_item.length - 1 && (
-                        <span
-                            className="hidden text-2xl font-thin leading-[0] text-slate-700 md:inline"
-                            aria-hidden="true"
-                        >
-                            |
-                        </span>
-                    )}
+
                 </React.Fragment>
             ))}
             <li>
-                <Button
+                {/* <Button
                     linkField={settings.data.cta_link}
                     label={settings.data.cta_label}
                     className="ml-3"
-                />
+                /> */}
+
             </li>
         </div>
     );

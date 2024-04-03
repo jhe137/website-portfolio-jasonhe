@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import BackgroundImage from "@/components/BackgroundImage";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from 'next/image';
+import Burger from "@/components/Burger";
 
 gsap.registerPlugin(ScrollTrigger);
 /**
@@ -31,7 +32,7 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
           start: "bottom bottom",
           end: "bottom 20%",
           scrub: 1,
-          markers: true,
+          markers: false,
         },
       });
 
@@ -53,7 +54,7 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
         },
       }, {
         x: (index) => {
-          return index % 2 === 0 ? 5 : -5;
+          return index % 2 === 0 ? 5 : -10;
         },
         ease: "power1.inOut",
         scale: 1,
@@ -96,16 +97,17 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
     >
 
 
-      <div className="min-h-[100vh] ">
-        <h1 className="overflow-hidden"><span className="name-animation block text-xl uppercase font-bold  text-slate-600 tracking-[.3em] text-center md:pt-10 md:pb-10">
+      <div className="pb-10 ">
+        <h1 className="overflow-hidden"><span className="name-animation block text-xl font-bold  text-slate-600 tracking-wide text-center md:pt-0 md:pb-1">
           {slice.primary.full_name}
         </span></h1>
+
         <div className="flex-col justify-center ">
           {slice.items.map(({ text }, index) => (
 
 
             <h1 key={index} className="overflow-hidden">
-              <span className={`block text-9xl uppercase text-center font-extrabold tracking-tight leading-[6.5rem] text-animation ${index === 1 || index === 5 || index === 3 ? 'text-slate-400' : 'text-slate-600'}`}>{text}
+              <span className={`pb-4 block text-8xl lowercase text-center font-bold tracking-tighter leading-[0.93em] text-animation ${index === 1 || index === 4 ? 'text-slate-400' : 'text-slate-600'}`}>{text}
               </span></h1>
 
           ))}

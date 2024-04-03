@@ -501,16 +501,6 @@ export type AllDocumentTypes =
  */
 export interface AlternateHeroSliceDefaultPrimary {
   /**
-   * Heading field in *AlternateHero → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: alternate_hero.primary.heading
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  heading: prismic.KeyTextField;
-
-  /**
    * Full Name field in *AlternateHero → Primary*
    *
    * - **Field Type**: Text

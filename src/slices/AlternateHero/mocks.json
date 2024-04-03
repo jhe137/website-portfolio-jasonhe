@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"heading": {
-				"__TYPE__": "FieldContent",
-				"value": "result",
-				"type": "Text"
-			},
 			"full_name": {
 				"__TYPE__": "FieldContent",
 				"value": "local",

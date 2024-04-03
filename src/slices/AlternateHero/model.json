@@ -12,13 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "heading": {
-          "type": "Text",
-          "config": {
-            "label": "Heading",
-            "placeholder": ""
-          }
-        },
         "full_name": {
           "type": "Text",
           "config": {
