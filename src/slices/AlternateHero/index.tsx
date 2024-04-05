@@ -4,10 +4,8 @@ import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { useEffect, useRef } from "react";
 import gsap from 'gsap';
-import BackgroundImage from "@/components/BackgroundImage";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from 'next/image';
-import Burger from "@/components/Burger";
 
 gsap.registerPlugin(ScrollTrigger);
 /**
@@ -50,11 +48,11 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
       tl.fromTo(
         ".text-animation", {
         x: (index) => {
-          return index % 2 === 0 ? -0 : 0;
+          return index % 2 === 0 ? -10 : 10;
         },
       }, {
         x: (index) => {
-          return index % 2 === 0 ? 5 : -10;
+          return index % 2 === 0 ? -5 : 5;
         },
         ease: "power1.inOut",
         scale: 1,
@@ -107,7 +105,7 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
 
 
             <h1 key={index} className="overflow-hidden">
-              <span className={`pb-4 block text-8xl lowercase text-center font-bold tracking-tighter leading-[0.93em] text-animation ${index === 1 || index === 4 ? 'text-slate-400' : 'text-slate-600'}`}>{text}
+              <span className={`pb-4 block text-7xl md:text-8xl lowercase text-center font-bold tracking-tighter leading-[0.93em] text-animation ${index === 1 || index === 4 ? 'text-slate-400' : 'text-slate-600'}`}>{text}
               </span></h1>
 
           ))}

@@ -1,16 +1,19 @@
 "use client";
 
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Content, KeyTextField, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Image from "next/image";
-import { MdMenu, MdClose } from "react-icons/md";
-import Button from "./Button";
+
 import { usePathname } from "next/navigation";
 import Burger from "./Burger";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
 
 export default function NavBar({
     settings,
@@ -19,9 +22,50 @@ export default function NavBar({
 }) {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
+    const component = useRef(null);
 
+    useEffect(() => {
+
+        {
+            let ctx = gsap.context(() => {
+                const tl = gsap.timeline({
+
+                    paused: true,
+                });
+
+                tl.fromTo(('.nav-animation'),
+                    { y: 100 },
+                    { y: 0, duration: 0.5, ease: "ease.inOut", stagger: 0.05, delay: 0.1, }, 0);
+                tl.fromTo(('.socials-animation'),
+                    { opacity: 0, y: 100 },
+                    { opacity: 1, y: 0, duration: 1, ease: "ease.inOut", delay: 0.1, }, 0);
+
+
+
+                open ? tl.play() : tl.reverse(0);
+            },);
+            return () => ctx.revert();
+        }
+    }, [open]);
+
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(".burger-menu", {
+            // scale: 1,
+            scrollTrigger: {
+                trigger: ".burger-menu",
+                start: 0,
+                end: window.innerHeight,
+                onLeave: () => { gsap.to(".burger-menu", { scale: 1, duration: 0.25 }) },
+                onEnterBack: () => { gsap.to(".burger-menu", { scale: 0, duration: 0.25 }) },
+            },
+        })
+
+
+    }, [])
     return (
-        <nav aria-label="Main navigation">
+
+        <nav aria-label="Main navigation" ref={component}>
             <ul className="flex flex-col justify-between rounded-b-lg  border-slate-700 bg-neutral-100 px-4 py-2 md:m-4 md:flex-row md:items-center ">
                 <div className="flex items-center justify-between">
                     <NameLogo name={settings.data.name} />
@@ -29,90 +73,83 @@ export default function NavBar({
                 </div>
                 <div
                     className={clsx(
-                        "fixed bottom-0 left-0 right-0 top-0 z-40 flex items-end gap-6 justify-end bg-slate-200 pr-8 pb-14 transition-transform duration-[800ms] ease-in-out md:hidden1",
-                        open ? "md:translate-y-[-50%] translate-y-0" : "translate-y-[-100%]",
+                        "fixed bottom-0 left-0 right-0 top-0 z-40 flex items-center gap-6 justify-center bg-slate-200 pr-8 pb-14 transition-transform duration-[500ms] ease-in-out md:hidden1",
+                        open ? "md:translate-y-[-20%]1 translate-y-0" : "translate-y-[-100%] delay-[700ms]",
                     )}
                 >
-                    <div className="socials inline-flex justify-center sm:justify-end">
-                        {isFilled.link(settings.data.github_link) && (
-                            <PrismicNextLink
-                                field={settings.data.github_link}
-                                className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
-                                aria-label={settings.data.name + " on GitHub"}
-                            >
-                                <FaGithub />
-                            </PrismicNextLink>
-                        )}
-                        {isFilled.link(settings.data.twitter_link) && (
-                            <PrismicNextLink
-                                field={settings.data.twitter_link}
-                                className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
-                                aria-label={settings.data.name + " on Twitter"}
-                            >
-                                <FaTwitter />
-                            </PrismicNextLink>
-                        )}
-                        {isFilled.link(settings.data.linkedin_link) && (
-                            <PrismicNextLink
-                                field={settings.data.linkedin_link}
-                                className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
-                                aria-label={settings.data.name + " on LinkedIn"}
-                            >
-                                <FaLinkedin />
-                            </PrismicNextLink>
-                        )}
-                    </div>
+                    <div className="flex-cols items-center justify-center" >
 
-                    {settings.data.nav_item.map(({ link, label }, index) => (
-                        <React.Fragment key={label}>
-                            <li className="first:mt-8">
-                                <PrismicNextLink
-                                    className={clsx(
-                                        "group relative block overflow-hidden rounded px-3 text-7xl font-bold tracking-tight text-slate-900 leading-tight",
-                                    )}
-                                    field={link}
-                                    onClick={() => setOpen(false)}
-                                    aria-current={
-                                        pathname.includes(asLink(link) as string)
-                                            ? "page"
-                                            : undefined
-                                    }
-                                >
-                                    {/* <span
+
+                        {settings.data.nav_item.map(({ link, label }, index) => (
+                            <React.Fragment key={label}>
+                                <li className="first:mt overflow-hidden">
+                                    <PrismicNextLink
                                         className={clsx(
-                                            "absolute inset-0 z-0 h-full translate-y-12 rounded bg-blue-400 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
-                                            pathname.includes(asLink(link) as string)
-                                                ? "translate-y-6"
-                                                : "translate-y-18",
+                                            "nav-animation group relative block overflow-hidden rounded px-5 text-7xl font-bold tracking-tight text-slate-900 leading-tight",
                                         )}
-                                    /> */}
-                                    <span className="relative">{label}</span>
+                                        field={link}
+                                        onClick={() => setOpen(false)}
+                                        aria-current={
+                                            pathname.includes(asLink(link) as string)
+                                                ? "page"
+                                                : undefined
+                                        }
+                                    >
+
+                                        <span className="relative">{label}</span>
+
+                                    </PrismicNextLink>
+                                </li>
+
+                            </React.Fragment>
+                        ))}
+                        <div className="socials-animation flex items-start justify-center ">
+
+                            {isFilled.link(settings.data.github_link) && (
+                                <PrismicNextLink
+                                    field={settings.data.github_link}
+                                    className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
+                                    aria-label={settings.data.name + " on GitHub"}
+                                >
+                                    <FaGithub />
                                 </PrismicNextLink>
-                            </li>
+                            )}
+                            {isFilled.link(settings.data.twitter_link) && (
+                                <PrismicNextLink
+                                    field={settings.data.twitter_link}
+                                    className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
+                                    aria-label={settings.data.name + " on Twitter"}
+                                >
+                                    <FaTwitter />
+                                </PrismicNextLink>
+                            )}
+                            {isFilled.link(settings.data.linkedin_link) && (
+                                <PrismicNextLink
+                                    field={settings.data.linkedin_link}
+                                    className="p-2 text-2xl text-slate-700 transition-all duration-150 hover:scale-125 hover:text-red-400"
+                                    aria-label={settings.data.name + " on LinkedIn"}
+                                >
+                                    <FaLinkedin />
+                                </PrismicNextLink>
+                            )}
+                        </div></div>
 
-                        </React.Fragment>
-                    ))}
-                    {/* <li> */}
-                    {/* <Button
-                            linkField={settings.data.cta_link}
-                            label={settings.data.cta_label}
-                            className="ml-3"
-                        /> */}
-
-                    {/* </li> */}
                 </div>
                 <div className="flex items-center justify-center">
                     <DesktopMenu settings={settings} pathname={pathname} />
-                    <button
-                        aria-expanded={open}
-                        aria-label="Open menu"
-                        className="block p-2 text-2xl text-slate-800 md:hidden1"
-                        onClick={() => setOpen(!open)}
-                    >
-                        <Burger />
-                    </button></div>
+                </div>
+                <button
+                    aria-expanded={open}
+                    aria-label="Open menu"
+                    className="block p-2 text-2xl text-slate-800 md:hidden1 fixed z-50 right-0 burger-menu scale-0"
+                    onClick={() => setOpen(!open)}
+                >
+                    <Burger />
+                </button>
             </ul>
+
         </nav>
+
     );
 }
 
@@ -149,28 +186,14 @@ function DesktopMenu({
                                 pathname.includes(asLink(link) as string) ? "page" : undefined
                             }
                         >
-                            {/* <span
-                                className={clsx(
-                                    "absolute inset-0 z-0 h-full rounded bg-slate-400 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
-                                    pathname.includes(asLink(link) as string)
-                                        ? "translate-y-6"
-                                        : "translate-y-8",
-                                )}
-                            /> */}
+
                             <span className="relative">{label}</span>
                         </PrismicNextLink>
                     </li>
 
                 </React.Fragment>
             ))}
-            <li>
-                {/* <Button
-                    linkField={settings.data.cta_link}
-                    label={settings.data.cta_label}
-                    className="ml-3"
-                /> */}
 
-            </li>
         </div>
     );
 }
