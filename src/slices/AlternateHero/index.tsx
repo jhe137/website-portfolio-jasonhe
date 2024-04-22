@@ -42,7 +42,7 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
         y: 0,
         duration: 2,
         ease: "power1.inOut",
-        stagger: 0.1,
+        stagger: 0.15,
 
       })
       tl.fromTo(
@@ -95,7 +95,7 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
     >
 
 
-      <div className="pb-10 ">
+      <div className="pb-20 ">
         <h1 className="overflow-hidden"><span className="name-animation block text-xl font-bold  text-slate-600 tracking-wide text-center md:pt-0 md:pb-1">
           {slice.primary.full_name}
         </span></h1>

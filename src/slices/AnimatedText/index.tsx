@@ -51,19 +51,22 @@ const AnimatedText = ({ slice }: AnimatedTextProps): JSX.Element => {
   }, []);
 
   const renderLetters = (name: KeyTextField, key: string) => {
-    if (!name) return;
-    return name.split("").map((letter, index) => {
-      // Check if the current letter is a space
-      if (letter === " ") {
-        // Render the space directly or wrap it in a span for additional styling
-        return <span key={index}>&nbsp;</span>;
-      }
-      return (
-        <span key={index} className={`text-animation text-animation-${key} inline-block opacity-0 mb-4`}>
-          {letter}
-        </span>
-      );
-    });
+    if (!name) return null;
+
+    // Split the name into words to process each word individually
+    const words = name.split(" ");
+
+    return words.map((word, wordIndex) => (
+      <span key={wordIndex} className="inline-block mr-5 last:mr-0">
+        {word.split("").map((letter, letterIndex) => (
+          <span key={letterIndex} className={`text-animation text-animation-${key} inline-block opacity-0 mb-4`}>
+            {letter}
+          </span>
+        ))}
+        {/* Adding a space after each word except the last one */}
+        {wordIndex < words.length - 1 ? ' ' : ''}
+      </span>
+    ));
   };
 
   return (

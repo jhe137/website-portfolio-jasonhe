@@ -55,6 +55,16 @@ const AnimatedHeadings = ({ slice }: AnimatedHeadingsProps): JSX.Element => {
     return () => ctx.revert();
   }, []);
 
+  const bgColors = [
+    "bg-red-500",
+    "bg-green-500",
+    "bg-blue-500",
+    "bg-yellow-500",
+    "bg-indigo-500",
+    "bg-purple-500",
+    "bg-pink-500",
+  ];
+
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -71,14 +81,14 @@ const AnimatedHeadings = ({ slice }: AnimatedHeadingsProps): JSX.Element => {
 
       {slice.items.map(({ skill_name, skill_inverted }, index) => (
         <div key={index}
-          className="border-b border-slate-900 flex  group items-center justify-center"
+          className="border-b border-slate-300 flex  group items-center justify-center"
           aria-label={skill_name || undefined}>
-          <span className="relative text-7xl md:text-9xl font-extrabold uppercase tracking-tighter  text-slate-400 ">{skill_name}</span>
+          <span className="relative text-7xl md:text-9xl pb-5 font-extrabold lowercase tracking-tighter  text-slate-400 ">{skill_name}</span>
 
-          <span className="absolute skill-animation text-7xl md:text-9xl font-extrabold uppercase tracking-tighter text-slate-800">{skill_name}</span>
+          <span className="absolute skill-animation text-7xl md:text-9xl pb-5 font-extrabold lowercase tracking-tighter text-slate-800">{skill_name}</span>
 
-          <div key={index} className="flex absolute bg-slate-700 w-full clip-path-initial items-center justify-center group-hover:clip-path-full " aria-label={skill_inverted || undefined}>
-            <span className="text-7xl md:text-9xl font-extrabold uppercase tracking-tighter  text-slate-200 ">{skill_inverted}</span>
+          <div key={index} className={`flex absolute ${bgColors[index % bgColors.length]} w-full clip-path-initial items-center justify-center group-hover:clip-path-full`} aria-label={skill_inverted || undefined}>
+            <span className="text-7xl md:text-9xl font-extrabold pb-5 lowercase tracking-tighter  text-slate-200 ">{skill_inverted}</span>
           </div>
         </div>
       ))}
