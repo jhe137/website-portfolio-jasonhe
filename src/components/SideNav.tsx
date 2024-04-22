@@ -26,29 +26,40 @@ export default function NavBar({
     const component = useRef(null);
 
     useEffect(() => {
-        const disableScroll = (event: WheelEvent | TouchEvent) => {
+        const disableScroll = (event) => {
+            // Prevent scrolling via wheel, touch, and keys
             event.preventDefault();
+        };
+
+        const keys = { 37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1 }; // Arrow keys, spacebar, page up/down, end/home
+
+        const preventDefaultForScrollKeys = (event) => {
+            if (keys[event.keyCode]) {
+                disableScroll(event);
+                return false;
+            }
         };
 
         if (open) {
             document.body.style.overflow = 'hidden';
-            // Add event listeners to block wheel and touch scrolling
             window.addEventListener('wheel', disableScroll, { passive: false });
             window.addEventListener('touchmove', disableScroll, { passive: false });
+            window.addEventListener('keydown', preventDefaultForScrollKeys, false);
         } else {
             document.body.style.overflow = 'auto';
-            // Remove event listeners
             window.removeEventListener('wheel', disableScroll);
             window.removeEventListener('touchmove', disableScroll);
+            window.removeEventListener('keydown', preventDefaultForScrollKeys);
         }
 
-        // Cleanup function to ensure the style is reset and listeners are removed
         return () => {
             document.body.style.overflow = 'auto';
             window.removeEventListener('wheel', disableScroll);
             window.removeEventListener('touchmove', disableScroll);
+            window.removeEventListener('keydown', preventDefaultForScrollKeys);
         };
     }, [open]);
+
 
     useEffect(() => {
         if (open) {
