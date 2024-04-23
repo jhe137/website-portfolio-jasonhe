@@ -26,14 +26,13 @@ export default function NavBar({
     const component = useRef(null);
 
     useEffect(() => {
-        const disableScroll = (event) => {
-            // Prevent scrolling via wheel, touch, and keys
+        const disableScroll = (event: MouseEvent | TouchEvent | KeyboardEvent) => {
             event.preventDefault();
         };
 
-        const keys = { 37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1 }; // Arrow keys, spacebar, page up/down, end/home
+        const keys: { [key: number]: boolean } = { 37: true, 38: true, 39: true, 40: true, 32: true, 33: true, 34: true, 35: true, 36: true }; // Arrow keys, spacebar, page up/down, end/home
 
-        const preventDefaultForScrollKeys = (event) => {
+        const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
             if (keys[event.keyCode]) {
                 disableScroll(event);
                 return false;
@@ -42,25 +41,23 @@ export default function NavBar({
 
         if (open) {
             document.body.style.overflow = 'hidden';
-            window.addEventListener('wheel', disableScroll, { passive: false });
-            window.addEventListener('touchmove', disableScroll, { passive: false });
-            window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+            window.addEventListener('wheel', disableScroll as EventListener, { passive: false });
+            window.addEventListener('touchmove', disableScroll as EventListener, { passive: false });
+            window.addEventListener('keydown', preventDefaultForScrollKeys as EventListener, false);
         } else {
             document.body.style.overflow = 'auto';
-            window.removeEventListener('wheel', disableScroll);
-            window.removeEventListener('touchmove', disableScroll);
-            window.removeEventListener('keydown', preventDefaultForScrollKeys);
+            window.removeEventListener('wheel', disableScroll as EventListener);
+            window.removeEventListener('touchmove', disableScroll as EventListener);
+            window.removeEventListener('keydown', preventDefaultForScrollKeys as EventListener);
         }
 
         return () => {
             document.body.style.overflow = 'auto';
-            window.removeEventListener('wheel', disableScroll);
-            window.removeEventListener('touchmove', disableScroll);
-            window.removeEventListener('keydown', preventDefaultForScrollKeys);
+            window.removeEventListener('wheel', disableScroll as EventListener);
+            window.removeEventListener('touchmove', disableScroll as EventListener);
+            window.removeEventListener('keydown', preventDefaultForScrollKeys as EventListener);
         };
     }, [open]);
-
-
     useEffect(() => {
         if (open) {
             // Pause all ScrollTriggers
