@@ -58,15 +58,7 @@ export default function NavBar({
             window.removeEventListener('keydown', preventDefaultForScrollKeys as EventListener);
         };
     }, [open]);
-    useEffect(() => {
-        if (open) {
-            // Pause all ScrollTriggers
-            ScrollTrigger.getAll().forEach(trigger => trigger.disable());
-        } else {
-            // Resume all ScrollTriggers
-            ScrollTrigger.getAll().forEach(trigger => trigger.enable());
-        }
-    }, [open]);
+
 
     useEffect(() => {
 
