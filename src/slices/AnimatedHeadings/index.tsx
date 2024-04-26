@@ -74,7 +74,7 @@ const AnimatedHeadings = ({ slice }: AnimatedHeadingsProps): JSX.Element => {
       ref={component}
     >
 
-      <Heading as="h2" size="xs" className="col-start-1 text-slate-600 tracking-widest text-center mb-5">
+      <Heading as="h2" size="xs" className="col-start-1 text-slate-600 tracking-[0.3em]  text-center mb-5">
         {slice.primary.heading}
       </Heading>
 

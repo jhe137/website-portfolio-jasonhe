@@ -95,8 +95,8 @@ const AlternateHero = ({ slice }: AlternateHeroProps): JSX.Element => {
     >
 
 
-      <div className="pb-20 ">
-        <h1 className="overflow-hidden"><span className="name-animation block text-xl font-bold  text-slate-600 tracking-wide text-center md:pt-0 md:pb-1">
+      <div className="md:pb-20 pb-12">
+        <h1 className="overflow-hidden"><span className="name-animation block text-xl font-bold  text-slate-600 md:tracking-wide text-center md:pt-0 md:pb-1">
           {slice.primary.full_name}
         </span></h1>
 

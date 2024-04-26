@@ -25,39 +25,7 @@ export default function NavBar({
     const pathname = usePathname();
     const component = useRef(null);
 
-    useEffect(() => {
-        const disableScroll = (event: MouseEvent | TouchEvent | KeyboardEvent) => {
-            event.preventDefault();
-        };
 
-        const keys: { [key: number]: boolean } = { 37: true, 38: true, 39: true, 40: true, 32: true, 33: true, 34: true, 35: true, 36: true }; // Arrow keys, spacebar, page up/down, end/home
-
-        const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
-            if (keys[event.keyCode]) {
-                disableScroll(event);
-                return false;
-            }
-        };
-
-        if (open) {
-            document.body.style.overflow = 'hidden';
-            window.addEventListener('wheel', disableScroll as EventListener, { passive: false });
-            window.addEventListener('touchmove', disableScroll as EventListener, { passive: false });
-            window.addEventListener('keydown', preventDefaultForScrollKeys as EventListener, false);
-        } else {
-            document.body.style.overflow = 'auto';
-            window.removeEventListener('wheel', disableScroll as EventListener);
-            window.removeEventListener('touchmove', disableScroll as EventListener);
-            window.removeEventListener('keydown', preventDefaultForScrollKeys as EventListener);
-        }
-
-        return () => {
-            document.body.style.overflow = 'auto';
-            window.removeEventListener('wheel', disableScroll as EventListener);
-            window.removeEventListener('touchmove', disableScroll as EventListener);
-            window.removeEventListener('keydown', preventDefaultForScrollKeys as EventListener);
-        };
-    }, [open]);
 
 
     useEffect(() => {

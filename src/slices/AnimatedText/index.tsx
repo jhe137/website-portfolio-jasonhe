@@ -57,7 +57,7 @@ const AnimatedText = ({ slice }: AnimatedTextProps): JSX.Element => {
     const words = name.split(" ");
 
     return words.map((word, wordIndex) => (
-      <span key={wordIndex} className="inline-block mr-5 last:mr-0">
+      <span key={wordIndex} className="inline-block md:mr-5 mr-2 last:mr-0">
         {word.split("").map((letter, letterIndex) => (
           <span key={letterIndex} className={`text-animation text-animation-${key} inline-block opacity-0 mb-4`}>
             {letter}
@@ -80,7 +80,7 @@ const AnimatedText = ({ slice }: AnimatedTextProps): JSX.Element => {
       <Heading as="h2" size="xs" className="col-start-1  text-slate-600 tracking-[0.3em] md:pt-20 mb-10">
         {slice.primary.heading}
       </Heading>
-      <div className="text-animation col-start-1 lg:text-7xl font-black tracking-tighter text-slate-600 md:pb-36 text-4xl">
+      <div className="text-animation col-start-1 lg:text-7xl font-black md:tracking-tighter tracking-tight text-slate-600 md:pb-36 text-4xl">
         <span className=" block">{renderLetters(slice.primary.description, "description")}</span>
       </div>
 
