@@ -25,15 +25,15 @@ export default function ContentBody({ page }: {
                     trigger: component.current,
                     start: "top bottom",
                     end: "bottom top",
-                    scrub: 1,
+                    scrub: true,
                     markers: true,
                 },
             });
 
-            tl.to(".img-parallax", {
-                y: 100,
+            tl.fromTo(".img-parallax", {
+                yPercent: -20,
 
-            })
+            }, { yPercent: 10 })
 
 
         }, component)
@@ -43,19 +43,18 @@ export default function ContentBody({ page }: {
 
 
     return (<Bounded as="article">
-        <div ref={component} className="rounded-2xl border-slate-500 bg-stone-100 px-4 py-10 md:px-8 md:py-10">
-            <Heading as="h1" size="md" className="mb-10">{page.data.title}</Heading>
-
-            <div className='flex gap-3 text-slate-100 text-lg font-bold '>
+        <div ref={component} className="rounded-2xl border-slate-500 bg-stone-100 px-4 py-10 md:px-8 md:py-10 ">
+            <div className="relative text-center overflow-hidden">
+                <Heading as="h1" className="absolute inset-0 flex items-center justify-center z-10 text-white uppercase">{page.data.title}</Heading>
+                <PrismicImage field={page.data.image} imgixParams={{ w: 600 }} className=" h-[120%] img-parallax" />
+            </div>
+            {/* <div className='flex gap-3 text-slate-100 text-lg font-bold '>
                 {page.tags.map((tag) => (
                     <span key={tag} className="rounded-full bg-slate-700 w-fit group relative items-center justify-center px-4 hover:opacity-90">{tag}</span>
                 ))}
-            </div>
-            {/*     
-    <p className="mt-8 border-b border-slate-700 md:text-xl font-medium text-slate-700">{page.data.date}</p> */}
-
-
-            <PrismicImage field={page.data.image} imgixParams={{ w: 600 }} className="img-parallax" /><div className="prose md:prose-lg mt-12 w-full max-w-none md:mt-20"><SliceZone slices={page.data.slices} components={components} />
+            </div> */}
+            <div className="prose md:prose-lg mt-12 w-full max-w-none md:mt-20">
+                <SliceZone slices={page.data.slices} components={components} />
             </div>
         </div>
     </Bounded>);
