@@ -14,33 +14,21 @@ export default function Avatar({
   image, className
 }: AvatarProps) {
 
-  const component = useRef(null);
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".avatar", {
-        opacity: 0, scale: 1
-      }, {
-        scale: 1, opacity: 1, duration: 0.5, ease: "power4.inOut"
-      }
-      );
 
-    });
-  }
-  );
 
   return (
-    <div ref={component} className={clsx("relative h-full w-full", className)}>
+    <div className={clsx("relative h-full w-full", className)}>
       <div
-        className="avatar aspect-square overflow-hidden   border-slate-700 opacity-0"
-        style={{ perspective: "500px", perspectiveOrigin: "150% 150%" }}
+        className="avatar aspect-square overflow-hidden   border-slate-700 "
+      // style={{ perspective: "500px", perspectiveOrigin: "150% 150%" }}
       >
         <PrismicNextImage
           field={image}
           className="avatar-image h-full w-full object-fill"
-          imgixParams={{ q: 90 }}
+          imgixParams={{ w: 600 }}
+
         />
-        <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
+        {/* <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div> */}
       </div>
     </div>
   );
