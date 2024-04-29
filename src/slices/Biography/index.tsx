@@ -61,8 +61,8 @@ const Biography = ({ slice }: BiographyProps): JSX.Element => {
           <div className="flex items-center h-full  align-center px-10">
             <PrismicRichText field={slice.primary.description} /></div>
         </div>
-        <div className="overflow-hidden">
-          <Avatar image={slice.primary.avatar} className="avatar-parallax h-[120%]" /></div>
+        <div className="overflow-hidden h-5/6 ">
+          <Avatar image={slice.primary.avatar} className="avatar-parallax" /></div>
       </div>
     </Bounded>
   );

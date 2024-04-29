@@ -44,9 +44,9 @@ export default function ContentBody({ page }: {
 
     return (<Bounded as="article">
         <div ref={component} className="rounded-2xl border-slate-500 bg-stone-100 px-4 py-10 md:px-8 md:py-10 ">
-            <div className="relative text-center overflow-hidden">
+            <div className="relative text-center overflow-hidden  ">
                 <Heading as="h1" className="absolute inset-0 flex items-center justify-center z-10 text-white uppercase">{page.data.title}</Heading>
-                <PrismicImage field={page.data.image} imgixParams={{ w: 600 }} className=" h-[120%] img-parallax" />
+                <PrismicImage field={page.data.image} imgixParams={{ w: 600 }} className=" img-parallax" />
             </div>
             {/* <div className='flex gap-3 text-slate-100 text-lg font-bold '>
                 {page.tags.map((tag) => (

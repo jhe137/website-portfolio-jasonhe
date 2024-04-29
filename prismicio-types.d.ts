@@ -237,7 +237,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = TextBlockSlice;
+type ProjectDocumentDataSlicesSlice = CaseStudySlice | TextBlockSlice;
 
 /**
  * Content for Project documents
@@ -767,6 +767,51 @@ export type BiographySlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *CaseStudy → Primary*
+ */
+export interface CaseStudySliceDefaultPrimary {
+  /**
+   * Image field in *CaseStudy → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for CaseStudy Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CaseStudySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CaseStudySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CaseStudy*
+ */
+type CaseStudySliceVariation = CaseStudySliceDefault;
+
+/**
+ * CaseStudy Shared Slice
+ *
+ * - **API ID**: `case_study`
+ * - **Description**: CaseStudy
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CaseStudySlice = prismic.SharedSlice<
+  "case_study",
+  CaseStudySliceVariation
+>;
+
+/**
  * Primary content in *Contact → Primary*
  */
 export interface ContactSliceDefaultPrimary {
@@ -1217,6 +1262,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      CaseStudySlice,
+      CaseStudySliceDefaultPrimary,
+      CaseStudySliceVariation,
+      CaseStudySliceDefault,
       ContactSlice,
       ContactSliceDefaultPrimary,
       ContactSliceVariation,

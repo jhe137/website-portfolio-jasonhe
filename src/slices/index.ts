@@ -7,6 +7,7 @@ export const components = {
   animated_headings: dynamic(() => import("./AnimatedHeadings")),
   animated_text: dynamic(() => import("./AnimatedText")),
   biography: dynamic(() => import("./Biography")),
+  case_study: dynamic(() => import("./CaseStudy")),
   contact: dynamic(() => import("./Contact")),
   content_index: dynamic(() => import("./ContentIndex")),
   experience: dynamic(() => import("./Experience")),

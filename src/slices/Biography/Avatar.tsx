@@ -17,14 +17,14 @@ export default function Avatar({
 
 
   return (
-    <div className={clsx("relative h-full w-full", className)}>
+    <div className={clsx("relative", className)}>
       <div
-        className="avatar aspect-square overflow-hidden   border-slate-700 "
+        className="avatar overflow-hidden   border-slate-700 "
       // style={{ perspective: "500px", perspectiveOrigin: "150% 150%" }}
       >
         <PrismicNextImage
           field={image}
-          className="avatar-image h-full w-full object-fill"
+          className="avatar-image object-cover"
           imgixParams={{ w: 600 }}
 
         />
