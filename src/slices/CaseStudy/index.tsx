@@ -21,7 +21,7 @@ const CaseStudy = ({ slice }: CaseStudyProps): JSX.Element => {
       className=""
     >
       <div className="border border-slate-700"></div>
-      <div className="mt-10 relative md:w-full md:h-[700px] h-[300px]">
+      <div className="mt-10 relative w-full md:h-[690px] h-[50vw] max-h-[690px]">
         <Image
           src="/images/mbp-16.png"
           alt="macbook mockup"
